@@ -14,7 +14,7 @@ const initialState = {
   numOfCakes: 10
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case BUY_CAKE: return {
       numOfCakes: state.numOfCakes - 1
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(reducer)
+const store = createStore(reducer, initialState)
 console.log('Initial State ', store.getState())
 const unsubscribe = store.subscribe(() => console.log('Updated State ', store.getState()))
 store.dispatch(buyCake())
